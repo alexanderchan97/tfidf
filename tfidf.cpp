@@ -14,23 +14,16 @@ int main(int argc, char **argv) {
 
     std::vector<std::string> termList = getFileList(argv[1]);
     std::vector<std::string> docList = getFileList(argv[2]);
-    std::vector<std::string> termFirst;
-    std::vector<std::string> termSec;
-    std::vector<double> tfidfFirst;
-    std::vector<double> tfidfSec;
-    for (size_t i = 0, ilen = docList.size(); i < ilen; i++) {
-        tfidfFirst.push_back(0);
-        tfidfSec.push_back(0);
-        termFirst.push_back("unknown");
-        termSec.push_back("unknown");
-    }
+    std::vector<std::string> termFirst(docList.size(), "unknown");
+    std::vector<std::string> termSec(docList.size(), "unknown");
+    std::vector<double> tfidfFirst(docList.size(), 0);
+    std::vector<double> tfidfSec(docList.size(), 0);
 
     for (const auto &t : termList) {
-        double tf;
         double idf = invIdf(t, argv[3]);
         for (size_t i = 0, ilen = docList.size(); i < ilen; i++) {
             std::string d = docList[i];
-            tf = logNormTf(t, d);
+            double tf = logNormTf(t, d);
             double tfidf = tf * idf;
             if (isnan(tfidf) || isinf(tfidf)) {
                 tfidf = 0;
