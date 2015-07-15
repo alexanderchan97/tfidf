@@ -10,7 +10,7 @@
  * @param d a filename containing the paths to each document in the corpus
  * @return 1 always
  */
-int unIdf(const std::string t, const std::string d) {
+int unIdf(const std::string &t, const std::string &d) {
     return 1;
 }
 
@@ -20,7 +20,7 @@ int unIdf(const std::string t, const std::string d) {
  * @param d a filename containing the paths to each document in the corpus
  * @return the inverse document frequency of the term
  */
-double invIdf(const std::string t, const std::string d) {
+double invIdf(const std::string &t, const std::string &d) {
     std::vector<std::string> corpList = getFileList(d);
     const int N = (int) corpList.size();
     int docCount = 0;
@@ -40,7 +40,7 @@ double invIdf(const std::string t, const std::string d) {
  * @param d a filename containing the paths to each document in the corpus
  * @return the smoothed IDF of the term
  */
-double invSmoothIdf(const std::string t, const std::string d) {
+double invSmoothIdf(const std::string &t, const std::string &d) {
     std::vector<std::string> corpList = getFileList(d);
     const int N = (int) corpList.size();
     int docCount = 0;

@@ -2,7 +2,7 @@
 #define __FILEREADER_HPP__
 #include <vector>
 
-std::string readFile(std::string path);
-std::vector<std::string> getFileList(std::string path);
+std::string readFile(const std::string &path);
+std::vector<std::string> getFileList(const std::string &path);
 
 #endif

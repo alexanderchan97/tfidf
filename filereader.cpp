@@ -8,7 +8,7 @@
  * @param path the path of the file to be read
  * @return contents of the file
  */
-std::string readFile(std::string path) {
+std::string readFile(const std::string &path) {
     std::string text;
     std::ifstream file(path);
     std::string str;
@@ -23,7 +23,7 @@ std::string readFile(std::string path) {
  * @param path the path of the file list
  * @return list of files
  */
-std::vector<std::string> getFileList(std::string path) {
+std::vector<std::string> getFileList(const std::string &path) {
     std::vector<std::string> fileList;
     std::string str;
     std::ifstream file(path);

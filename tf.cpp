@@ -3,18 +3,16 @@
 #include "tf.hpp"
 #include "filereader.hpp"
 
-using namespace std;
-
 /**
  * Identifies the boolean term frequency of a term within the document
  * @param t the term to identify term frequency
  * @param d the document within which to identify the term
  * @return 1 if the term exists in the document, 0 otherwise
  */
-int boolTf(const string t, const string d) {
-    string dText = readFile(d);
+int boolTf(const std::string &t, const std::string &d) {
+    std::string dText = readFile(d);
     size_t found = dText.find(t);
-    if (found != string::npos) {
+    if (found != std::string::npos) {
         return 1;
     } else {
         return 0;
@@ -27,13 +25,13 @@ int boolTf(const string t, const string d) {
  * @param d the document within which to identify the term
  * @return the count of the term within the document
  */
-int rawTf(const string t, const string d) {
-    string dText = readFile(d);
+int rawTf(const std::string &t, const std::string &d) {
+    std::string dText = readFile(d);
     size_t lastIndex = 0;
     int freq = 0;
-    while (lastIndex != string::npos) {
+    while (lastIndex != std::string::npos) {
         lastIndex = dText.find(t, lastIndex);
-        if (lastIndex != string::npos) {
+        if (lastIndex != std::string::npos) {
             freq++;
             lastIndex += t.length();
         }
@@ -47,8 +45,8 @@ int rawTf(const string t, const string d) {
  * @param t the term to identify term frequency
  * @param d the document within which to identify the term
  * @return the logarithmically scaled frequency of the term
- * @see rawTf(const string t, const string d)
+ * @see rawTf(const std::string &t, const std::string &d)
  */
-double logNormTf(const string t, const string d) {
+double logNormTf(const std::string &t, const std::string &d) {
     return log10(1 + (double) rawTf(t, d));
 }
