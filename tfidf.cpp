@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cmath>
 #include "tf.hpp"
 #include "idf.hpp"
 #include "filereader.hpp"
@@ -25,7 +26,7 @@ int main(int argc, char **argv) {
             std::string d = docList[i];
             double tf = logNormTf(t, d);
             double tfidf = tf * idf;
-            if (isnan(tfidf) || isinf(tfidf)) {
+            if (std::isnan(tfidf) || std::isinf(tfidf)) {
                 tfidf = 0;
             }
             if (tfidfFirst[i] < tfidf) {

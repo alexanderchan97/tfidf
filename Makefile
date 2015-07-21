@@ -1,13 +1,15 @@
 CC = gcc
 CXX = clang
 
+LINK.o = $(LINK.cc)
+
 INCLUDES = 
 
 CFLAGS = -g -Wall $(INCLUDES)
-FXXFLAGS = -g -Wall $(INCLUDES)
+CXXFLAGS = -g -std=c++11 -Wall $(INCLUDES)
 
-LDFLAGS = -g
-LDLIBS = 
+LDFLAGS = -g -Wall -lstdc++
+LDLIBS = -lm 
 
 
 tfidf: tfidf.o tf.o idf.o filereader.o
